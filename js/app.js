@@ -40,4 +40,55 @@ if (questionFiveGuess === 'yes' || questionFiveGuess === 'y') {
   alert("Nope. Wrong answer.")
 }
 
-alert(`Thanks ${userName} for playing my guessing game!`)
+
+// QUESTION SIX
+// assign answer to variable myNum and initialize guessNum to zero
+let myNum = 8;
+let guessNum = 4;
+
+while(guessNum > 0) {
+
+  let questionSixGuess = prompt('I\'m thinking of a number between 1 and 10. Can you guess it in 4 tries?');
+
+  if (parseInt(questionSixGuess) === myNum) {
+    alert(`That's great ${userName}! You got it!`);
+    break;
+
+  } else if (questionSixGuess < myNum) {
+    alert(`You're guess is too low ${userName}. Guess again.`);
+
+  } else if (questionSixGuess > myNum) {
+    alert(`Your guess is too high ${userName}. Guess again.`);
+
+  } 
+  guessNum--;
+
+}
+alert(`The correct answer was ${myNum}`);
+
+
+// QUESTION SIX
+// collabed with Liam Grist and Brendan Moore
+let dreamVaca = ['egypt', 'ireland', 'sweden', 'beliz', 'switzerland', 'alaska'];
+
+for(let i = 0; i < 6; i++) {
+  let questionSevenGuess = prompt('Now can you guess where I want to vacation?').toLowerCase();
+  let correct = false;
+  for (let j = 0; j < dreamVaca.length; j++) {
+    console.log(dreamVaca[j]);
+    console.log(questionSevenGuess);
+    if(questionSevenGuess === dreamVaca[j]) {
+      correct = true;
+      break;
+    }
+   
+    questionSevenGuess--;
+  }
+  if (correct === false) {
+    alert('Sorry that\'s not one of my places.'); 
+  } else if(correct === true) {
+    alert(`Yeah, you guessed one of my dream vacations ${userName}!`);
+    break;
+  }
+}
+alert(`Thanks for playing ${userName}!`);
