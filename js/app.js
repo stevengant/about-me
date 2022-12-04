@@ -1,5 +1,7 @@
 "use strict"
 
+let score = 0;
+
 let userName = prompt('Hi! What\'s your name?');
 
 alert(`Welcome to my site ${userName}! Please answer the following questions yes/no (or y/n)`);
@@ -9,6 +11,8 @@ function questionOne(){
 
   if (questionOneGuess === 'yes' || questionOneGuess === 'y') {
     alert("Yeah, you got it!");
+    score++;
+
   } else if(questionOneGuess === 'no' || questionOneGuess === 'n') {
     alert("Nope. Wrong answer.");
   }
@@ -20,6 +24,8 @@ function questionTwo() {
 
   if (questionTwoGuess === 'yes' || questionTwoGuess === 'y') {
     alert("Yeah, you got it!");
+    score++;
+
   } else if(questionTwoGuess === 'no' || questionTwoGuess === 'n') {
     alert("Nope. Wrong answer.");
   }
@@ -31,6 +37,8 @@ function questionThree() {
 
   if (questionThreeGuess === 'no' || questionThreeGuess === 'n') {
     alert("Yeah, you got it!");
+    score++;
+
   } else if(questionThreeGuess === 'yes' || questionThreeGuess === 'y') {
     alert("Nope. Wrong answer.");
   }
@@ -43,6 +51,8 @@ function questionFour() {
 
   if (questionFourGuess === 'yes' || questionFourGuess === 'y') {
     alert("Yeah, you got it!");
+    score++;
+
   } else if(questionFourGuess === 'no' || questionFourGuess === 'n') {
     alert("Nope. Wrong answer.");
   }
@@ -54,6 +64,8 @@ function questionFive() {
 
   if (questionFiveGuess === 'yes' || questionFiveGuess === 'y') {
     alert("Heck yeah it is! High fives!!");
+    score++;
+
   } else if(questionFiveGuess === 'no' || questionFiveGuess === 'n') {
     alert("Nope. Wrong answer.")
   }
@@ -66,8 +78,6 @@ questionFive();
 
 // DONE: Set a number for user to guess.
 let myNum = 8;
-
-
 
 // After all attempts have been exhausted, tell the user the correct answer. Consider using a loop of some sort.
 // collabed with Liam Grist and Brendan Moore
@@ -86,6 +96,7 @@ function questionSix() {
     // DONE: Indicate user got it right.
     if (questionSixGuess === myNum) {
       alert(`That's great ${userName}! You got it!`);
+      score++;
       break;
 
     // DONE: Indicate if “too low”.
@@ -108,11 +119,6 @@ alert(`The correct answer was ${myNum}`);
 
 // QUESTION SEVEN
 
-
-
-// TODO: they run out of attempts.
-
-// Consider using a loop of some sort for this question.
 // collabed with Liam Grist and Brendan Moore
 function questionSeven() {
   let dreamVaca = ['egypt', 'ireland', 'sweden', 'beliz', 'switzerland', 'alaska'];
@@ -121,28 +127,21 @@ function questionSeven() {
   for(let i = 0; i < 6; i++) {
 
     // DONE: Add a 7th question that has multiple possible correct answers that are stored in an array.
-    let questionSevenGuess = prompt('Now can you guess where I want to vacation?').toLowerCase();
-    let correct = false;
+    let questionSevenGuess = prompt(`Now can you guess where I want to vacation? You have ${6-i} guesses left.`).toLowerCase();
+
     for (let j = 0; j < dreamVaca.length; j++) {
 
       if(questionSevenGuess === dreamVaca[j]) {
         alert('Yes! That\'s one of my places!')
+
         score++;
-        correct = true;
+        i = 6;
         break;
-      }
-    
-      questionSevenGuess--;
-    }
-    if (correct === false) {
-      alert('Sorry that\'s not one of my places.'); 
-      // DONE: The guesses will end once the user guesses a correct answer 
-    } else if(correct === true) {
-      alert(`Yeah, you guessed one of my dream vacations ${userName}!`);
-      break;
+      }   
     }
   }
 }
 questionSeven();
 // DONE: Display all the possible correct answers to the user.
-alert(`Thanks for playing ${userName}! My dream vacations are ${dreamVaca}.`);
+
+alert(`You got ${score} questions right. Thanks for playing.`)
